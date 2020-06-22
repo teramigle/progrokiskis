@@ -8,6 +8,7 @@
 body {
     font-family: Calibri, sans-serif;
     background-color: #FCFCFC;
+    color: #4C5458;
 }
 
 #top {
@@ -16,7 +17,7 @@ body {
 
 header {
     display: flex;
-    background-color: #F1F1F1;
+    background-color: #8EDDD9;
     width: 100%;
     position: fixed;
     z-index: 2;
@@ -33,7 +34,6 @@ header ul {
 header li {
     list-style: none;
     padding: 0 30px;
-    font-weight: bold;
     font-size: 18px;
 }
 
@@ -43,7 +43,7 @@ li a:hover {
 
 li a {
     text-decoration: none;
-    color: black;
+    color: #4C5458;
 }
 
 .main {
@@ -75,12 +75,12 @@ li a {
     font-size: 36px;
     font-weight: bold;
     line-height: 1.3;
+    color: #464C4F;
 }
 
 .counter {
     text-align: center;
-    padding: 70px;
-    padding-bottom: 0;
+    padding-top: 100px;
 }
 
 h2 {
@@ -92,15 +92,24 @@ h2 {
     font-size: 76px;
     font-family: Consolas, monospace;
     font-weight: bold;
+    color: #8EDDD9;
 }
 
-main {
+/* main {
     width: 70%;
     margin: 0 auto;
-}
+} */
 
 #programa, #vieta, #info {
-    margin: 20px;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.blue {
+   
+    background: linear-gradient(0deg, rgba(252,252,252,1), 15%, rgba(196,235,233,1) 15%,  rgba(196,235,233,1) 75%,  rgba(252,252,252,1) 75%); 
+    
+    
 }
 
 .container {
@@ -112,14 +121,14 @@ main {
 .box {
     width: 44%;
     padding: 20px;
-    box-shadow: 0 6px 10px #8EDDD9;
+    box-shadow: 5px 5px 3px #E2E1E1;
     margin: 20px;
-    border-radius: 1%;
+    background-color: white;
 }
 
-.box:hover {
+/* .box:hover {
     background-color: #8EDDD9;
-}
+} */
 
 .box ul {
     padding: 20px;
@@ -129,18 +138,56 @@ main {
     padding: 20px;
 }
 .box li {
-    margin-left: 20px;
     line-height: 3;
+    list-style: none;
+    /* background: url('images/bullet.png') left center no-repeat; */
+    padding-left: 30px;
+    position: relative;
+}
+
+.box li::after {
+    /* bullets */
+    content: url('images/bullet.png');
+    position: absolute;
+    left: 0px; /*adjust manually*/
+    top: 4px;
+}
+
+.box li::before {
+    /* lines */
+    content:"";
+    position: absolute;
+    left: 8px; /* adjust manually */
+    border-left: 1px solid #E6E6E6;
+    height: 100%;
+    width: 1px;
+    
+}
+
+.box li:first-child:before {
+   /* first li's line */
+   top: 20px; /* moves the line down so that it disappears under the bullet. Adjust manually */
+}
+
+.box li:last-child:before {
+    /* last li's line */
+   height: 20px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
 }
 
 main h3 {
     margin: 20px;
-    font-size: 24px;
-    padding-top: 70px;
+    font-size: 26px;
+    padding-top: 100px;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: normal;
 }
 
 #vieta {
     display: flex;
+    padding-bottom: 70px;
 }
 
 #vieta p {
@@ -153,41 +200,78 @@ main h3 {
 
 iframe {
     margin-top: 20px;
-    padding-top: 70px;
+    padding-top: 100px;
     width: 45%;
 }
 
+.grey {
+    background-color: #F0F0F0;
+}
 #info {
-    margin-bottom: 70px;
+    padding-bottom: 70px;
+    margin-bottom: 0;
 }
 
 ol {
     margin: 20px;
+    list-style: none;
+    counter-reset: my-awesome-counter;
 }
 
 ol li {
     margin: 20px;
+    counter-increment: my-awesome-counter;
+    position: relative;
+    padding-left: 20px;
 }
 
-.fb {
-    width: 40px;
-    padding-left: 10px;
+ol li::before {
+  content: counter(my-awesome-counter);
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  --size: 24px;
+  left: -20px;
+  line-height: var(--size);
+  width: var(--size);
+  height: var(--size);
+  top: -3px;
+  background: #8EDDD9;
+  border-radius: 50%;
+  text-align: center;
+}
+  /* ol li::before {
+    content: counter(my-awesome-counter);
+    color: red;
+    background: cyan;
+    width: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+  } */
+
+i{
+    display: inline-block;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    
 }
 
 footer {
-    display: flex;
-    justify-content: space-between;
-    background-color: #F1F1F1;
+    background-color: #8EDDD9;
     padding: 15px;
 }
 
 footer p {
-    text-align: right;
+    text-align: center;
     font-size: 14px;
+    color: white;
 }
 
 @media only screen and (max-width: 1024px) {
-    main {
+    #programa, #vieta, #info {
         width: 80%;
     }
     .box {
@@ -203,7 +287,7 @@ footer p {
 
 
 @media only screen and (max-width: 768px) {
-    main {
+    #programa, #vieta, #info {
         width: 90%;
     }
     .box {
@@ -218,7 +302,7 @@ footer p {
         left: 20px;
     }
     #counter {
-        font-size: 44px;
+        font-size: 56px;
     }
 }
 
@@ -229,7 +313,7 @@ footer p {
     ul {
         margin-right: 5px;
     }
-    main {
+    #programa, #vieta, #info {
         width: 90%;
     }
     .box {
@@ -239,7 +323,7 @@ footer p {
         font-size: 16px;
     }
     #counter {
-        font-size: 28px;
+        font-size: 40px;
     }
     h2 {
         font-size: 20px;
@@ -263,7 +347,7 @@ footer p {
     ul {
         margin-right: 5px;
     }
-    main {
+    #programa, #vieta, #info {
         width: 100%;
     }
     .text {
@@ -271,7 +355,7 @@ footer p {
         left: 10px;
     }
     #counter {
-        font-size: 20px;
+        font-size: 32px;
     }
     h2 {
         font-size: 16px;
@@ -280,7 +364,7 @@ footer p {
         padding-top: 50px;
     }
     .counter {
-        padding-top: 30px;
+        padding-top: 50px;
     }
     iframe {
         padding-top: 50px;
